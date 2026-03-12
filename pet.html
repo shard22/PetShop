@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PetShop | Мой питомец</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="main-header" id="dynamic-header"></header>
+    <div class="global-dash" id="dynamic-dash"></div>
+
+    <main class="container" style="padding: 40px 0;">
+        <div style="background:#fff; padding:35px; border-radius:30px; box-shadow:0 15px 40px rgba(0,0,0,0.05)">
+            
+            <div class="pet-header-info" style="display: flex; align-items: center; gap: 25px; margin-bottom: 30px;">
+                <div class="pet-avatar-wrapper">
+                    <img src="images/gr.jpg" alt="Max" class="pet-main-avatar">
+                </div>
+                <div>
+                    <h2 style="margin: 0; font-size: 28px;">Гейси (Шотладнская)</h2>
+                    <p style="margin: 5px 0 0; color: #64748b; font-size: 16px;">Шотладнская вислоухая• 2 года</p>
+                    <button class="btn-edit-mini" onclick="openModal('prof-m')" style="margin-top: 10px; background: none; border: 1px solid #ddd; padding: 5px 12px; border-radius: 8px; cursor: pointer; font-size: 12px;">✎ Редактировать профиль</button>
+                </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #f0f2f5; margin-bottom: 30px;">
+
+            <h3>Трекинг питомца: Грейси</h3>
+            <div style="height: 350px;">
+                <canvas id="petLineChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('petLineChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+                    datasets: [{
+                        label: 'Вес (кг)',
+                        data: [45, 47, 48, 50, 51, 52, 53],
+                        borderColor: '#2d5cf6',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#2d5cf6',
+                        pointRadius: 5,
+                        tension: 0.4,
+                        fill: true,
+                        backgroundColor: 'rgba(45, 92, 246, 0.05)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

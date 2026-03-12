@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PetShop | Оплата</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="main-header"></header>
+    <div class="global-dash"></div>
+
+    <main class="container" style="padding: 40px 0; display:grid; grid-template-columns: 2fr 1fr; gap:30px">
+        <section style="background:#fff; padding:30px; border-radius:24px;">
+            <h2>Оформление автоплатежа</h2>
+            <form onsubmit="finishOrder(event)">
+                <h4>Адрес в Петропавловске </h4>
+                <input type="text" id="final-addr" placeholder="Улица, дом, квартира" required style="width:100%; padding:15px; border-radius:10px; border:1px solid #ddd; margin-bottom:20px">
+                <h4>Данные карты</h4>
+                <input type="text" placeholder="0000 0000 0000 0000" required style="width:100%; padding:15px; border-radius:10px; border:1px solid #ddd; margin-bottom:20px">
+                <button type="submit" class="btn-main" style="width:100%">Подтвердить и оплатить</button>
+            </form>
+        </section>
+        <aside id="check-res" style="background:#fff; padding:30px; border-radius:24px; height:fit-content;"></aside>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = JSON.parse(localStorage.getItem('petCart')) || [];
+            const total = items.reduce((s, i) => s + i.price, 0);
+            document.getElementById('check-res').innerHTML = `<h3>Заказ</h3>` + 
+                items.map(i => `<p>${i.name}: ${i.price} ₸</p>`).join('') + `<hr><b>Итого: ${total} ₸</b>`;
+        });
+        function finishOrder(e) {
+            e.preventDefault();
+            alert('Успешно! Курьер Алексей доставит заказ на ' + document.getElementById('final-addr').value);
+            localStorage.setItem('petCart', JSON.stringify([]));
+            window.location.href = 'pet.html';
+        }
+    </script>
+</body>
+</html>

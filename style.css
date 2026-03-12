@@ -1,0 +1,176 @@
+:root {
+    --primary: #2d5cf6;
+    --accent: #ff7a00;
+    --bg: #f8fafc;
+    --white: #ffffff;
+}
+
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    margin: 0; background: var(--bg); color: #1e293b; 
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Шапка с эффектом стекла */
+.main-header { 
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(10px); 
+    padding: 15px 0; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+    position: sticky; top: 0; z-index: 1000; 
+}
+
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav-links a { margin-left: 20px; text-decoration: none; color: #475569; font-weight: 600; font-size: 14px; }
+
+/* Тот самый блок для КРАСИВЫХ ФОТО */
+.card {
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    transition: 0.4s ease;
+    overflow: hidden; /* Важно для обрезки фото при зуме */
+}
+
+.card img {
+    width: 100%;           
+    height: 220px;         /* Фиксированная высота для всех фото */
+    object-fit: cover;     /* Умная обрезка без искажений */
+    object-position: center; 
+    border-radius: 24px 24px 0 0; 
+    display: block;
+    transition: transform 0.5s ease; /* Плавный зум */
+}
+/* Стили для аватара питомца */
+.pet-main-avatar {
+    width: 120px;          /* Размер фото */
+    height: 120px;
+    border-radius: 50%;    /* Делаем круглым */
+    object-fit: cover;     /* Чтобы фото не искажалось */
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Тень для объема */
+}
+
+.pet-avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Эффект при наведении на фото */
+.pet-main-avatar:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.btn-edit-mini:hover {
+    background-color: #f8f9fa !important;
+    border-color: var(--primary) !important;
+    color: var(--primary);
+}
+.card:hover img {
+    transform: scale(1.08); /* Эффект приближения при наведении */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Элементы карточки */
+.card-content { padding: 20px; }
+.price-toggle { display: flex; background: #f1f5f9; padding: 4px; border-radius: 12px; margin: 15px 0; }
+.t-btn { flex: 1; border: none; padding: 8px; border-radius: 9px; cursor: pointer; font-weight: 700; font-size: 12px; }
+.t-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(45,92,246,0.3); }
+
+/* Модалки */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); z-index: 2000; }
+.modal-side { position: absolute; right: 0; width: 380px; height: 100%; background: #fff; padding: 35px; box-shadow: -10px 0 30px rgba(0,0,0,0.1); animation: slide 0.3s ease-out; }
+@keyframes slide { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.btn-main { background: var(--accent); color: #fff; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; }
+/* --- МОБИЛЬНАЯ ОПТИМИЗАЦИЯ (2026) --- */
+
+@media (max-width: 768px) {
+    /* 1. Навигация: делаем её вертикальной или более компактной */
+    .header-flex {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        margin: 0 5px;
+        font-size: 13px;
+    }
+
+    /* 2. Дашборд: превращаем в список */
+    .dash-flex {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    /* 3. Hero-секция (Главная): текст сверху, фото снизу */
+    .hero {
+        flex-direction: column;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    /* 4. Сетка товаров: 1 карточка на весь экран */
+    .grid {
+        grid-template-columns: 1fr; /* Одна колонка вместо трех */
+        gap: 20px;
+    }
+
+    .card img {
+        height: 200px; /* Немного уменьшаем высоту фото */
+    }
+
+    /* 5. Модальные окна (Корзина и Профиль): во весь экран */
+    .modal-side {
+        width: 100%; /* На телефоне корзина на весь экран */
+        padding: 20px;
+    }
+
+    /* 6. Страница оплаты (Checkout): колонки в один ряд */
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 7. Графики (Личный кабинет): делаем меньше высоту */
+    #petLineChart {
+        max-height: 250px !important;
+    }
+
+    /* 8. Таблицы в админке: добавляем прокрутку */
+    .staff-view {
+        overflow-x: auto;
+    }
+}
+
+/* Оптимизация для совсем маленьких экранов (iPhone SE и др.) */
+@media (max-width: 480px) {
+    .btn-main {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+}

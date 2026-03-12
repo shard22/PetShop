@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PetShop KZ | Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="main-header"></header>
+    <div class="global-dash"></div>
+
+    <main class="container">
+        <section class="hero" style="text-align:center; padding: 80px 0;">
+            <h1 style="font-size: 48px; margin-bottom: 20px;">Healthy Food, Happy Pets</h1>
+            <p style="font-size: 18px; color: #64748b; max-width: 700px; margin: 0 auto 30px;">
+                Минимизируем «человеческий фактор» в уходе за питомцами путем автоматизации цикла покупки корма.
+            </p>
+            <a href="shop.html" class="btn-main" style="font-size: 18px; padding: 15px 40px;">В магазин</a>
+        </section>
+
+        <section class="comments-section" style="background: #fff; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+            <h2 style="margin-bottom: 30px;">Отзывы наших клиентов</h2>
+            <div id="live-comments"></div>
+            <hr style="margin: 30px 0; border: 0; border-top: 1px dotted #ddd;">
+            <form class="comment-form" onsubmit="handleComment(event)">
+                <h4 style="margin-bottom: 15px;">Оставить отзыв</h4>
+                <input type="text" id="c-name" placeholder="Ваше имя" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:10px; border:1px solid #ddd; font-family: inherit;">
+                <textarea id="c-text" placeholder="Поделитесь вашим опытом..." required style="width:100%; height:100px; padding:12px; border-radius:10px; border:1px solid #ddd; font-family: inherit; margin-bottom: 15px;"></textarea>
+                <button type="submit" class="btn-main">Опубликовать отзыв</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="container" style="padding: 50px 0; text-align: center; color: #94a3b8; font-size: 14px;">
+        <p>Петропавловск, 2026  | Галкин А.А. | СКУ им. М. Козыбаева | Грейси</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function renderComments() {
+            const list = document.getElementById('live-comments');
+            const comms = JSON.parse(localStorage.getItem('petComments')) || [{ name: "Мария", text: "Очень удобно, что не нужно самой высчитывать граммы!" }];
+            list.innerHTML = comms.map(c => `
+                <div style="background:#f8fafc; padding:20px; border-radius:15px; margin-bottom:15px; border-left:5px solid var(--primary)">
+                    <strong>${c.name}</strong><br><p style="margin:5px 0 0">${c.text}</p>
+                </div>`).join('');
+        }
+        function handleComment(e) {
+            e.preventDefault();
+            const cm = JSON.parse(localStorage.getItem('petComments')) || [];
+            cm.push({ name: document.getElementById('c-name').value, text: document.getElementById('c-text').value });
+            localStorage.setItem('petComments', JSON.stringify(cm));
+            location.reload();
+        }
+        document.addEventListener('DOMContentLoaded', renderComments);
+    </script>
+</body>
+</html>
