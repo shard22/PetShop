@@ -9,7 +9,7 @@ const PRODUCTS = [
 
 // Состояние (память)
 let cart = JSON.parse(localStorage.getItem('petCart')) || [];
-let user = JSON.parse(localStorage.getItem('petUser')) || { name: "Мария", email: "maria@mail.kz", pet: "Макс (Ретривер)" };
+let user = JSON.parse(localStorage.getItem('petUser')) || { name: "Катя", email: "arkadi@mail.kz", pet: "Грейси (Шотладнская)" };
 
 document.addEventListener('DOMContentLoaded', () => {
     renderBaseUI(); // Рисуем шапку и Дашборд на всех страницах
@@ -41,7 +41,7 @@ function renderBaseUI() {
         dash.innerHTML = `
         <div class="container dash-flex" style="display:flex; justify-content:space-around; font-weight:600">
             <span>Питомец: <strong>${user.pet}</strong></span>
-            <span>Вес: <strong>53 кг</strong></span>
+            <span>Вес: <strong>16 кг</strong></span>
             <span>Доставка: <strong>15 Марта</strong></span>
         </div>`;
     }
@@ -145,4 +145,5 @@ function renderCartList() {
         </div>`).join('');
     const total = cart.reduce((s, i) => s + i.price, 0);
     document.getElementById('cart-total-val').innerText = total + " ₸";
+
 }
