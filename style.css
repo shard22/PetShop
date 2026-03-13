@@ -48,7 +48,7 @@ body {
     /* --- ФОНОВАЯ КАРТИНКА --- */
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), /* Слой затемнения */
-        url('images/pet-bg.jpg'); /* Твоя картинка */
+        url('images/phon.jpg'); /* Твоя картинка */
     
     background-size: cover;      /* Растягиваем на всю ширину */
     background-position: center;  /* Центрируем фото */
@@ -209,3 +209,4 @@ body {
     }
 
 }
+
