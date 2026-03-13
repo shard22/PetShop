@@ -44,6 +44,40 @@ body {
     display: block;
     transition: transform 0.5s ease; /* Плавный зум */
 }
+.hero {
+    /* --- ФОНОВАЯ КАРТИНКА --- */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), /* Слой затемнения */
+        url('images/pet-bg.jpg'); /* Твоя картинка */
+    
+    background-size: cover;      /* Растягиваем на всю ширину */
+    background-position: center;  /* Центрируем фото */
+    background-attachment: fixed; /* Эффект параллакса (картинка замирает при скролле) */
+    
+    /* --- ГЕОМЕТРИЯ И ЦВЕТ --- */
+    padding: 120px 20px;        /* Большие отступы сверху и снизу */
+    text-align: center;
+    color: #ffffff;             /* Весь текст в этом блоке станет белым */
+    
+    /* Красивое скругление нижней части секции */
+    border-radius: 0 0 50px 50px; 
+    margin-bottom: 40px;
+}
+
+/* Настраиваем заголовок внутри .hero, чтобы он был мощным */
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.3); /* Тень для читаемости */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
 /* Стили для аватара питомца */
 .pet-main-avatar {
     width: 120px;          /* Размер фото */
@@ -173,4 +207,5 @@ body {
     .logo {
         font-size: 20px;
     }
+
 }
