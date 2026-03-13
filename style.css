@@ -45,38 +45,35 @@ body {
     transition: transform 0.5s ease; /* Плавный зум */
 }
 .hero {
-    /* --- ФОНОВАЯ КАРТИНКА --- */
+    /* 1. Делаем фон темнее (заменили 0.5 на 0.7) */
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), /* Слой затемнения */
-        url('images/phon.jpg'); /* Твоя картинка */
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+        url('images/phon.jpg'); 
     
-    background-size: cover;      /* Растягиваем на всю ширину */
-    background-position: center;  /* Центрируем фото */
-    background-attachment: fixed; /* Эффект параллакса (картинка замирает при скролле) */
-    
-    /* --- ГЕОМЕТРИЯ И ЦВЕТ --- */
-    padding: 120px 20px;        /* Большие отступы сверху и снизу */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 120px 20px;
     text-align: center;
-    color: #ffffff;             /* Весь текст в этом блоке станет белым */
     
-    /* Красивое скругление нижней части секции */
-    border-radius: 0 0 50px 50px; 
-    margin-bottom: 40px;
+    /* 2. Делаем текст идеально белым и добавляем контрастную тень */
+    color: #ffffff; 
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Мощная тень под буквами */
 }
 
-/* Настраиваем заголовок внутри .hero, чтобы он был мощным */
 .hero h1 {
     font-size: 3.5rem;
-    font-weight: 800;
+    font-weight: 800; /* Максимальная жирность */
     margin-bottom: 20px;
-    text-shadow: 2px 4px 10px rgba(0,0,0,0.3); /* Тень для читаемости */
+    letter-spacing: 1px; /* Немного раздвинем буквы для четкости */
 }
 
 .hero p {
     font-size: 1.2rem;
-    max-width: 700px;
+    font-weight: 600; /* Сделаем подзаголовок тоже чуть жирнее */
+    max-width: 800px;
     margin: 0 auto 30px;
-    opacity: 0.9;
+    color: #ffffff; /* Убедись, что тут нет opacity, чтобы текст был ярким */
 }
 /* Стили для аватара питомца */
 .pet-main-avatar {
@@ -209,4 +206,5 @@ body {
     }
 
 }
+
 
