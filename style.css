@@ -48,7 +48,7 @@ body {
     /* 1. Делаем фон темнее (заменили 0.5 на 0.7) */
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
-        url('images/phon.jpg'); 
+        url('PetShop/images/phon.jpg'); 
     
     background-size: cover;
     background-position: center;
@@ -206,5 +206,6 @@ body {
     }
 
 }
+
 
 
